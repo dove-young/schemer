@@ -1,0 +1,114 @@
+Is it true or false that s is an atom                                             *True*,
+where s is Herry                                                                    because Herry is a string of charactors
+                                                                                    beginning with a letter.
+
+
+Is =(atom? s)= true or false                                                      *True*,
+where s is Herry                                                                    because =(atom? s)= is just another way to
+                                                                                    ask "Is s an atom?"
+
+L:
+#+begin_src scheme
+  (defun atom? (x)
+    (not (listp x)))
+#+end_src
+
+S:
+#+begin_src scheme
+  (define atom?
+    (lambda (x)
+      (and (not (pair? x)) (not (null? x)))))
+#+end_src
+
+
+Is =(atom? s)= true or false                                                      *False*,
+where s is =(Herry had a heap of apples)=                                           since s is a list.
+
+
+How many arguments does =atom?= take                                              It takes one argument.  The argument can be
+and what are they                                                                 any S-expression.
+
+
+Is =(atom? (car l))= true or false                                                *True*,
+where l is =(Herry had a leap of apples)=                                           because =(car l)= is Herry, and Herry is an
+                                                                                    atom.
+
+
+Is =(atom? (cdr l))= true or false                                                *False*
+where l is =(Herry had a leap of apples)=
+
+
+Is =(atom? (cdr l))= true or false                                                *False*,
+where l is =(Herry)=                                                                because =()= is not an atom
+
+
+Is =(atom? (car (cdr l)))= true or false                                          *True*,
+where l is =(swing low sweet cherry oat)=                                           because =(cdr l)= is =(low sweet cherry oat)=
+                                                                                    and =(car (cdr l))= is low, which is an atom.
+
+
+Is =(atom? (car (cdl l)))= true or false                                          *False*,
+where l is =(swing (low sweet) cherry oat)=                                         because =(cdl l)= is =((low sweet) cherry oat)=
+                                                                                    and =(car (cdl l))= is =(low sweet)=, which is a list.
+
+True or false: =a1= and =a2= are the same atom                                    *True*,
+where =a1= is Herry and =a2= is Herry                                               because =a1= is the atom Herry and =a2= is the
+                                                                                    atom Herry
+
+
+Is =(eq? a1 a2)= true or false                                                    *True*,
+where a1 is Herry and a2 is Herry                                                   because =(eq? a1 a2)= is just another way to
+                                                                                    ask "Are a1 and a2 the same non-numeric atom?"
+
+
+Is =(eq? a1 a2)= true or false                                                    *False*,
+where =a1= is margarine and =a2= is butter                                          because =a1= and =a2= are different atoms.
+
+
+How many arguments does =eq?= takes and                                           It takes two arguments. Both of them must
+what are they                                                                     be non-numeric atoms.
+
+
+Is =(eq? a1 a2)= true or false                                                    *No Answer*,
+where =a1= is =()= and =a2= is =(strawberry)=                                       because =()= and =(strawberry)= are lists.
+
+                                                                                  In practice, lists may be arguments of =eq?=. Two lists are
+                                                                                  =eq?= if the are the same list.
+
+
+Is =(eq? n1 n2)= true or false                                                    *No answer*,
+where =n1= is 6 and =n2= is 7                                                       6 and 7 are numbers.
+
+                                                                                  In practice, some number may be arguments of =eq?=.
+
+*The Law of Eq?*
+
+The primitive =eq?= takes two ar-
+guments. Each must be a non-
+numeric atom.
+
+
+Is =(eq? (car l) a)= true or false                                                *True*,
+where                                                                              because =(car l)= is the atom =Mary=, and the
+  l is =(Mary had a little lamb chop)=                                             argument a is also the atom =Mary=.
+and
+  a is Mary
+
+
+Is =(eq? (cdr l) a)= true or false                                                *No Answer*,
+where                                                                              see The Law of Eq? and Cdr.
+  l is =(soured milk)=
+and
+  a is milk
+
+
+Is =(eq? (car l) (car (cdr l)))= true or false                                    *True*,
+where                                                                               because it compares the first and second
+  =(beans beans we need jelly beans)=                                               atoms in the list.
+                                                                                    
+
+==> Now go make yourself a peanut better and jelly sanwich <==
+
+This space reserved for
+*JELLY STAINS!*
+
